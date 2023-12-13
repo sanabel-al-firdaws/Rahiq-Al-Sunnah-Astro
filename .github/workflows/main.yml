@@ -1,0 +1,33 @@
+name: google-docs-to-github
+description: Export Google Docs to GitHub.
+inputs:
+  github_branch:
+    description: GitHub branch name where files will be pushed.
+    required: false
+    default: master
+  github_directory:
+    description: GitHub directory path where files will be pushed.
+    required: false
+    default: google_docs
+  github_token: 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
+    description: GitHub access token to push files.
+    required: false
+  google_drive_folder_id:
+    description: 1h8vBtbVfgpT6neJnMc33vKVStjtChwbA
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: r7kamura/google-docs-to-markdown@v0
+      with:
+        google_drive_folder_id: ${{ inputs.google_drive_folder_id }}
+    - uses: peaceiris/actions-gh-pages@v3
+      with:
+        destination_dir: ${{ inputs.github_directory }}
+        disable_nojekyll: true
+        github_token: ${{ inputs.github_token || github.token }}
+        publish_branch: ${{ inputs.github_branch }}
+        publish_dir: output
+branding:
+  color: blue
+  icon: download-cloud
