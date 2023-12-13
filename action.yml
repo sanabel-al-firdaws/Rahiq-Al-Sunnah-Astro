@@ -13,7 +13,7 @@ inputs:
     description: GitHub access token to push files.
     required: false
   google_drive_folder_id:
-    description: https://drive.google.com/drive/folders/1h8vBtbVfgpT6neJnMc33vKVStjtChwbA
+    description: 1h8vBtbVfgpT6neJnMc33vKVStjtChwbA
     required: true
 runs:
   using: composite
