@@ -3,7 +3,7 @@ name: import
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "37 0 * * *"
 
 jobs:
   publish:
